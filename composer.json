@@ -1,0 +1,27 @@
+{
+	"name": "tas2580/whatsapp",
+	"type": "phpbb-extension",
+	"description": "Notifies user over Wahatsapp",
+	"homepage": "https://tas2580.net/downloads/download-14.html",
+	"version": "0.1.0",
+	"time": "2013-11-05",
+	"license": "GPL-2.0",
+	"authors": [{
+			"name": "tas2580",
+			"email": "mail@tas2580.net",
+			"homepage": "https://tas2580.net",
+			"role": "Developer"
+		}],
+	"require": {
+		"php": ">=5.3.3"
+	},
+	"require-dev": {
+		"phpbb/epv": "dev-master"
+	},
+	"extra": {
+		"display-name": "tas2580 Whatsapp Notifier",
+		"soft-require": {
+			"phpbb/phpbb": ">=3.1.4,<3.2.*@dev"
+		}
+	}
+}
