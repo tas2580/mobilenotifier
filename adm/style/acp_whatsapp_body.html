@@ -6,17 +6,23 @@
 <fieldset>
 	<legend>{L_ACP_SETTINGS}</legend>
 	<dl>
-		<dt><label for="nickname">{L_ACP_NICKNAME}</label><br /><span>{L_ACP_NICKNAME_EXPLAIN}</span></dt>
-		<dd><input type="text" id="nickname" name="nickname" value="{NICKNAME}" /></dd>
-	</dl>
-	<dl>
 		<dt><label for="sender">{L_ACP_SENDER}</label><br /><span>{L_ACP_SENDER_EXPLAIN}</span></dt>
-		<dd><input type="text" id="sender" name="sender" value="{SENDER}" /></dd>
+		<dd><input type="text" id="sender" name="sender" size="40" maxlength="255" value="{SENDER}" /></dd>
 	</dl>
 	<dl>
 		<dt><label for="password">{L_ACP_PASSWORD}</label><br /><span>{L_ACP_PASSWORD_EXPLAIN}</span></dt>
-		<dd><input type="password" id="password" name="password" value="{PASSWORD}" /></dd>
+		<dd><input type="password" id="password" name="password" size="40" maxlength="255" value="{PASSWORD}" /></dd>
 	</dl>
+	<dl>
+		<dt><label for="status">{L_ACP_STATUS}</label><br /><span>{L_ACP_STATUS_EXPLAIN}</span></dt>
+		<dd><input type="text" id="status" name="status" size="40" maxlength="255" value="{STATUS}" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="image">{L_ACP_IMAGE}</label><br /><span>{L_ACP_IMAGE_EXPLAIN}</span></dt>
+		<dd><input name="image" id="image" type="file" accept="image/*" /></dd>
+	</dl>
+	
+	
 </fieldset>
 
 <fieldset>

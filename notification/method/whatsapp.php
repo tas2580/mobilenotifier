@@ -37,22 +37,18 @@ class whatsapp extends \phpbb\notification\method\messenger_base
 	*/
 	public function global_available()
 	{
-		return !(
-			empty($this->config['whatsapp_nickname']) ||
-			empty($this->config['whatsapp_sender']) ||
-			empty($this->config['whatsapp_password'])
-		);
+		return !(empty($this->config['whatsapp_sender']) || empty($this->config['whatsapp_password']));
 	}
+
 	public function notify()
 	{
 		$template_dir_prefix = '';
-			
+
 		if (!$this->global_available())
 		{
 			return;
 		}
-		
-		
+
 		if (empty($this->queue))
 		{
 			 return;
@@ -71,17 +67,10 @@ class whatsapp extends \phpbb\notification\method\messenger_base
 			include($this->phpbb_root_path . 'includes/functions_user.' . $this->php_ext);
 		}
 		$banned_users = phpbb_get_banned_user_ids($user_ids);
-		// Load the messenger
-		if (!class_exists('messenger'))
-		{
-			include($this->phpbb_root_path . 'includes/functions_messenger.' . $this->php_ext);
-		}
-		$messenger = new \messenger();
-		
+
 		// Load all the users we need
 		$this->user_loader->load_users($user_ids);
-		$board_url = generate_board_url();
-		
+
 		// Time to go through the queue and send emails
 		foreach ($this->queue as $notification)
 		{
@@ -89,35 +78,33 @@ class whatsapp extends \phpbb\notification\method\messenger_base
 			{
 				continue;
 			}
-  
+
 			$user = $this->user_loader->get_user($notification->user_id);
 
 			if ($user['user_type'] == USER_IGNORE || in_array($notification->user_id, $banned_users))
 			{
 				continue;
 			}
-			
+
 			$this->template($template_dir_prefix . $notification->get_email_template(), $user['user_lang']);
 			$this->assign_vars(array_merge(array(
-				'USERNAME'                        => $user['username'],
-				'U_NOTIFICATION_SETTINGS'        => generate_board_url() . '/ucp.' . $this->php_ext . '?i=ucp_notifications',
+				'USERNAME'				=> $user['username'],
+				'U_NOTIFICATION_SETTINGS'	=> generate_board_url() . '/ucp.' . $this->php_ext . '?i=ucp_notifications',
 			), $notification->get_email_template_variables()));
-			
-			require($this->phpbb_root_path . 'ext/tas2580/whatsapp/whatsapp/src/whatsprot.class.' . $this->php_ext);
+
+			require($this->phpbb_root_path . 'ext/tas2580/whatsapp/vendor/mgp25/whatsapi/src/whatsprot.class.' . $this->php_ext);
 
 		 	$this->msg = trim($this->template->assign_display('body'));
 
 			// Lets send the Whatsapp
-			$wa = new \WhatsProt($this->config['whatsapp_sender'], $this->config['whatsapp_nickname']);
+			$wa = new \WhatsProt($this->config['whatsapp_sender'], '');
 			$wa->connect();
 			$wa->loginWithPassword($this->config['whatsapp_password']);
-			$wa->sendMessage($user['user_whatsapp'] , $this->msg);
-
+			$wa->sendMessage($user['user_whatsapp'], $this->msg);
 		}
-		$messenger->save_queue();
 		$this->empty_queue();
-		//return $this->notify_using_messenger(NOTIFY_IM, 'short/');
 	}
+
 	function template($template_file, $template_lang = '', $template_path = '')
 	{
 		global $config, $phpbb_root_path, $phpEx, $user, $phpbb_extension_manager;

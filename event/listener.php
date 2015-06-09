@@ -105,7 +105,7 @@ class listener implements EventSubscriberInterface
 	public function profile_info_modify_sql_ary($event)
 	{
 		$event['sql_ary'] = array_merge($event['sql_ary'], array(
-				'user_whatsapp' => $event['data']['user_whatsapp'],
+			'user_whatsapp' => $event['data']['user_whatsapp'],
 		));
 	}
 }

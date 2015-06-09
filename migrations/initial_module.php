@@ -13,17 +13,17 @@ class initial_module extends \phpbb\db\migration\migration
 {
 	public function effectively_installed()
 	{
-		return isset($this->config['whatsapp_version']) && version_compare($this->config['whatsapp_version'], '0.1.0', '>=');
+		return isset($this->config['whatsapp_version']) && version_compare($this->config['whatsapp_version'], '0.1.1', '>=');
 	}
 	
 	public function update_data()
 	{
 		return array(
 			// Add configs
-			array('config.add', array('whatsapp_nickname', '')),
 			array('config.add', array('whatsapp_sender', '')),
 			array('config.add', array('whatsapp_password', '')),
-			array('config.add', array('whatsapp_version', '0.1.0')),
+			array('config.add', array('whatsapp_status', '')),
+			array('config.add', array('whatsapp_version', '0.1.1')),
 			
 			// Add ACP module
 			array('module.add', array(
