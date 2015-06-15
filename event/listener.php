@@ -62,11 +62,27 @@ class listener implements EventSubscriberInterface
 	static public function getSubscribedEvents()
 	{
 		return array(
-			'core.ucp_profile_modify_profile_info'					=> 'profile_modify_profile_info',
-			'core.ucp_profile_info_modify_sql_ary'				=> 'profile_info_modify_sql_ary',
-			'core.acp_users_modify_profile'						=> 'profile_modify_profile_info',
-			'core.acp_users_profile_modify_sql_ary'				=> 'profile_info_modify_sql_ary',
+			'core.ucp_profile_modify_profile_info'					=> 'ucp_profile_modify_profile_info',
+			'core.ucp_profile_info_modify_sql_ary'				=> 'ucp_profile_info_modify_sql_ary',
+			'core.acp_users_modify_profile'						=> 'acp_profile_modify_profile_info',
+			'core.acp_users_profile_modify_sql_ary'				=> 'acp_profile_info_modify_sql_ary',
 		);
+	}
+	/**
+	* Add a new data field to the ACP
+	*
+	* @param object $event The event object
+	* @return null
+	* @access public
+	*/
+	public function acp_profile_modify_profile_info($event)
+	{
+		$whatsapp_cc =  $this->request->variable('whatsapp_cc', '');
+		$whatsapp =  $this->request->variable('whatsapp', $event['user_row']['user_whatsapp']);
+		$event['user_row'] = array_merge($event['user_row'], array(
+			'user_whatsapp'	=> $whatsapp_cc . $whatsapp,
+		));
+		$this->add_field($event['user_row']['user_whatsapp']);
 	}
 
 	/**
@@ -76,7 +92,7 @@ class listener implements EventSubscriberInterface
 	* @return null
 	* @access public
 	*/
-	public function profile_modify_profile_info($event)
+	public function ucp_profile_modify_profile_info($event)
 	{
 		$whatsapp_cc =  $this->request->variable('whatsapp_cc', '');
 		$whatsapp =  $this->request->variable('whatsapp', $this->user->data['user_whatsapp']);
@@ -84,7 +100,14 @@ class listener implements EventSubscriberInterface
 			'user_whatsapp'	=> $whatsapp_cc . $whatsapp,
 		));
 
-		$whatsapp = $this->user->data['user_whatsapp'];
+		$this->add_field($this->user->data['user_whatsapp']);
+	}
+
+	/**
+	 * Add the Whatsapp field to profile
+	 */
+	private function add_field($whatsapp)
+	{
 		if(empty($whatsapp))
 		{
 			$lang_variable = $this->request->server('HTTP_ACCEPT_LANGUAGE', '');
@@ -103,6 +126,7 @@ class listener implements EventSubscriberInterface
 			'WHATSAPP_CC'	=> $this->wa->cc_select($cc),
 		));
 	}
+
 
 	/**
 	* Validate users changes to their whatsapp number
@@ -132,10 +156,24 @@ class listener implements EventSubscriberInterface
 	* @return null
 	* @access public
 	*/
-	public function profile_info_modify_sql_ary($event)
+	public function ucp_profile_info_modify_sql_ary($event)
 	{
 		$event['sql_ary'] = array_merge($event['sql_ary'], array(
 			'user_whatsapp' => $event['data']['user_whatsapp'],
+		));
+	}
+
+	/**
+	* Admin has changed his whatsapp number, update the database
+	*
+	* @param object $event The event object
+	* @return null
+	* @access public
+	*/
+	public function acp_profile_info_modify_sql_ary($event)
+	{
+		$event['sql_ary'] = array_merge($event['sql_ary'], array(
+			'user_whatsapp' => $event['user_row']['user_whatsapp'],
 		));
 	}
 }
