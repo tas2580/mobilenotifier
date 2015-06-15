@@ -34,7 +34,6 @@ $lang = array_merge($lang, array(
 	'WHATSAPP_NR_EXPLAIN'				=> 'Gib die Telefon Nummer (incl. Vorwahl ohne 0) an auf der du Whatsapp Benachichtigungen empfangen möchtest.',
 
 	// Country Codes
-
 	'CC_AD'		=> 'Andorra',
 	'CC_AE'		=> 'Vereinigte Arabische Emirate',
 	'CC_AF'		=> 'Afghanistan',
@@ -49,7 +48,6 @@ $lang = array_merge($lang, array(
 	'CC_AU'		=> 'Australien',
 	'CC_AW'		=> 'Aruba',
 	'CC_AZ'		=> 'Aserbaidschan',
-
 	'CC_BA'		=> 'Bosnien und Herzegowina',
 	'CC_BB'		=> 'Barbados',
 	'CC_BD'		=> 'Bangladesch',
@@ -70,7 +68,6 @@ $lang = array_merge($lang, array(
 	'CC_BW'		=> 'Botswana',
 	'CC_BY'		=> 'Weißrussland',
 	'CC_BZ'		=> 'Belize',
-
 	'CC_CA'		=> 'Kanada',
 	'CC_CD'		=> 'Demokratische Republik Kongo',
 	'CC_CF'		=> 'Zentralafrikanische Republik',
@@ -88,16 +85,12 @@ $lang = array_merge($lang, array(
 	'CC_CW'		=> 'Curaçao',
 	'CC_CY'		=> 'Zypern',
 	'CC_CZ'		=> 'Tschechische Republik',
-
 	'CC_DE'		=> 'Deutschland',
 	'CC_DJ'		=> 'Dschibuti',
 	'CC_DK'		=> 'Dänemark',
 	'CC_DM'		=> 'Dominica',
 	'CC_DO'		=> 'Dominikanische Republik',
 	'CC_DZ'		=> 'Algerien',
-
-
-
 	'CC_EC'		=> 'Ecuador',
 	'CC_EE'		=> 'Estland',
 	'CC_EG'		=> 'Ägypten',
@@ -105,16 +98,12 @@ $lang = array_merge($lang, array(
 	'CC_ER'		=> 'Eritrea',
 	'CC_ES'		=> 'Spanien',
 	'CC_ET'		=> 'Äthiopien',
-
-
 	'CC_FK'		=> 'Falklandinseln',
 	'CC_FI'		=> 'Finnland',
 	'CC_FJ'		=> 'Fidschi',
 	'CC_FO'		=> 'Färöer',
 	'CC_FM'		=> 'Föderierte Staaten von Mikronesien',
 	'CC_FR'		=> 'Frankreich',
-
-
 	'CC_GA'		=> 'Gabun',
 	'CC_GB'		=> 'Vereinigtes Königreich',
 	'CC_GD'		=> 'Grenada',
@@ -133,15 +122,11 @@ $lang = array_merge($lang, array(
 	'CC_GU'		=> 'Guam',
 	'CC_GW'		=> 'Guinea-Bissau',
 	'CC_GY'		=> 'Guyana',
-
-
 	'CC_HK'		=> 'Hongkong',
 	'CC_HN'		=> 'Honduras',
 	'CC_HR'		=> 'Kroatien',
 	'CC_HT'		=> 'Haiti',
 	'CC_HU'		=> 'Ungarn',
-
-
 	'CC_ID'		=> 'Indonesien',
 	'CC_IE'		=> 'Irland',
 	'CC_IL'		=> 'Israel',
@@ -152,14 +137,10 @@ $lang = array_merge($lang, array(
 	'CC_IR'		=> 'Iran',
 	'CC_IS'		=> 'Island',
 	'CC_IT'		=> 'Italien',
-
-
 	'CC_JE'		=> 'Jersey',
 	'CC_JM'		=> 'Jamaika',
 	'CC_JO'		=> 'Jordanien',
 	'CC_JP'		=> 'Japan',
-
-
 	'CC_KE'		=> 'Kenia',
 	'CC_KG'		=> 'Kirgisistan',
 	'CC_KH'		=> 'Kambodscha',
@@ -171,8 +152,6 @@ $lang = array_merge($lang, array(
 	'CC_KW'		=> 'Kuwait',
 	'CC_KY'		=> 'Kaiman-Inseln',
 	'CC_KZ'		=> 'Kasachstan',
-
-
 	'CC_LA'		=> 'Laos',
 	'CC_LB'		=> 'Libanon',
 	'CC_LC'		=> 'St. Lucia',
@@ -184,8 +163,6 @@ $lang = array_merge($lang, array(
 	'CC_LU'		=> 'Luxemburg',
 	'CC_LV'		=> 'Lettland',
 	'CC_LY'		=> 'Libyen',
-
-
 	'CC_MA'		=> 'Marokko',
 	'CC_MC'		=> 'Monaco',
 	'CC_MD'		=> 'Moldawien',
@@ -209,8 +186,6 @@ $lang = array_merge($lang, array(
 	'CC_MX'		=> 'Mexiko',
 	'CC_MY'		=> 'Malaysia',
 	'CC_MZ'		=> 'Mosambik',
-
-
 	'CC_NA'		=> 'Namibia',
 	'CC_NC'		=> 'Neukaledonien',
 	'CC_NE'		=> 'Niger',
@@ -223,11 +198,7 @@ $lang = array_merge($lang, array(
 	'CC_NR'		=> 'Nauru',
 	'CC_NU'		=> 'Niue',
 	'CC_NZ'		=> 'Neuseeland',
-
 	'CC_OM'		=> 'Oman',
-
-
-
 	'CC_PA'		=> 'Panama',
 	'CC_PE'		=> 'Peru',
 	'CC_PF'		=> 'Französisch-Polynesien',
@@ -241,17 +212,12 @@ $lang = array_merge($lang, array(
 	'CC_PT'		=> 'Portugal',
 	'CC_PW'		=> 'Belau',
 	'CC_PY'		=> 'Paraguay',
-
-
 	'CC_QA'		=> 'Katar',
-
 	'CC_RE'		=> 'Réunion',
 	'CC_RO'		=> 'Rumänien',
 	'CC_RS'		=> 'Serbien',
 	'CC_RU'		=> 'Russland',
 	'CC_RW'		=> 'Ruanda',
-
-
 	'CC_SA'		=> 'Saudi-Arabien',
 	'CC_SB'		=> 'Salomonen',
 	'CC_SC'		=> 'Seychellen',
@@ -272,8 +238,6 @@ $lang = array_merge($lang, array(
 	'CC_SX'		=> 'Sint Maarten',
 	'CC_SY'		=> 'Syrien',
 	'CC_SZ'		=> 'Swasiland',
-
-
 	'CC_TC'		=> 'Turks- und Caicosinseln',
 	'CC_TD'		=> 'Tschad',
 	'CC_TG'		=> 'Togo',
@@ -289,15 +253,11 @@ $lang = array_merge($lang, array(
 	'CC_TV'		=> 'Tuvalu',
 	'CC_TW'		=> 'Taiwan',
 	'CC_TZ'		=> 'Tansania',
-
-
 	'CC_UA'		=> 'Ukraine',
 	'CC_UG'		=> 'Uganda',
 	'CC_US'		=> 'Vereinigte Staaten von Amerika',
 	'CC_UY'		=> 'Uruguay',
 	'CC_UZ'		=> 'Usbekistan',
-
-
 	'CC_VA'		=> 'Vatikanstadt',
 	'CC_VC'		=> 'St. Vincent und die Grenadinen',
 	'CC_VE'		=> 'Venezuela',
@@ -305,9 +265,6 @@ $lang = array_merge($lang, array(
 	'CC_VI'		=> 'Amerikanische Jungferninseln',
 	'CC_VN'		=> 'Vietnam',
 	'CC_VU'		=> 'Vanuatu',
-
-
-
 	'CC_WF'		=> 'Wallis und Futuna',
 	'CC_WS'		=> 'Samoa',
 	'CC_XK'		=> 'Kosovo',
@@ -316,5 +273,4 @@ $lang = array_merge($lang, array(
 	'CC_ZA'		=> 'Südafrika',
 	'CC_ZM'		=> 'Sambia',
 	'CC_ZW'		=> 'Simbabwe',
-
 ));
