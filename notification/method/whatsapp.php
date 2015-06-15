@@ -29,7 +29,7 @@ class whatsapp extends \phpbb\notification\method\messenger_base
 	*/
 	public function is_available()
 	{
-		return ($this->global_available() && $this->user->data['user_whatsapp']);
+		return ($this->global_available() && (strlen($this->user->data['user_whatsapp']) > 2));
 	}
 	/**
 	* Is this method available at all?
