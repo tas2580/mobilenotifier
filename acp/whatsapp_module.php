@@ -17,7 +17,7 @@ class whatsapp_module
 
     public function main($id, $mode)
     {
-	global $config, $user, $template, $request, $phpbb_root_path, $phpEx;
+	global $config, $user, $template, $request, $phpbb_container, $phpbb_root_path, $phpEx;
 
 	$user->add_lang_ext('tas2580/whatsapp', 'common');
 	$this->tpl_name = 'acp_whatsapp_body';
@@ -37,14 +37,9 @@ class whatsapp_module
 		$config->set('whatsapp_password', $request->variable('password', ''));
 		$config->set('whatsapp_status', $request->variable('status', ''));
 
-		//Update Whatsapp status
-		require($phpbb_root_path . 'ext/tas2580/whatsapp/vendor/mgp25/whatsapi/src/whatsprot.class.' . $phpEx);
 
-		$wa = new WhatsProt($config['whatsapp_sender'], '');
-
-		$wa->connect();
-		$wa->loginWithPassword($config['whatsapp_password']);
-		$wa->sendStatusUpdate($config['whatsapp_status']);
+		$wa = $phpbb_container->get('tas2580.whatsapp.helper');
+		$wa->update_status($config['whatsapp_status']);
 
 		if($request->is_set_post('image'))
 		{
@@ -53,7 +48,8 @@ class whatsapp_module
 			$file =  $upload->form_upload('image');
 			if($file->filename)
 			{
-				$wa->sendSetProfilePicture($file->filename);
+				$wa->update_picture($file->filename);
+
 			}
 		}
 

@@ -5,9 +5,17 @@ services:
             - @request
             - @user
             - @template
+            - @service_container
             - %core.root_path%
         tags:
             - { name: event.listener }
+    tas2580.whatsapp.helper:
+        class: tas2580\whatsapp\helper
+        arguments:
+            - @config
+            - @user
+            - %core.root_path%
+            - %core.php_ext%
     notification.method.whatsapp:
         class: tas2580\whatsapp\notification\method\whatsapp
         scope: prototype
