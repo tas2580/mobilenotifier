@@ -41,11 +41,12 @@ class whatsapp_module
 		$wa = $phpbb_container->get('tas2580.whatsapp.helper');
 		$wa->update_status($config['whatsapp_status']);
 
-		if($request->is_set_post('image'))
+		if($request->file('image'))
 		{
 			include_once($phpbb_root_path . 'includes/functions_upload.' . $phpEx);
-			$upload = new \fileupload('', array('jpg', 'jpeg', 'gif', 'png'));
-			$file =  $upload->form_upload('image');
+			$upload = new \fileupload();
+			$upload->set_allowed_extensions(array('jpg', 'png'));
+			$file = $upload->form_upload('image');
 			if($file->filename)
 			{
 				$wa->update_picture($file->filename);

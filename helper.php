@@ -57,7 +57,6 @@ class helper
 		$cc_array = $this->_country_code();
 		$cc = substr($dst, 0, 2);
 		$whatsapp = substr($dst, 2);
-
 		$this->wa->sendMessage($cc_array[$cc][1] . $whatsapp, $msg);
 	}
 
