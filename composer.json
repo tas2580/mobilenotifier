@@ -3,7 +3,7 @@
 	"type": "phpbb-extension",
 	"description": "Notifies user over Wahatsapp",
 	"homepage": "https://tas2580.net/downloads/download-14.html",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"time": "2013-11-05",
 	"license": "GPL-2.0",
 	"authors": [{
