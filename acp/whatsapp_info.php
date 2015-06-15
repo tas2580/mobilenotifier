@@ -16,11 +16,11 @@ class whatsapp_info
 		return array(
 			'filename'		=> '\tas2580\whatsapp\whatsapp_module',
 			'title'			=> 'ACP_WHATSAPP_TITLE',
-			'version'		=> '0.1.1',
+			'version'		=> '0.1.2',
 			'modes'		=> array(
 				'settings'		=> array(
 					'title'		=> 'ACP_WHATSAPP_TITLE',
-					'auth'	=> 'ext_tas2580/whatsapp && acl_a_board', 
+					'auth'	=> 'ext_tas2580/whatsapp && acl_a_board',
 					'cat'		=> array('ACP_WHATSAPP_TITLE')
 				),
 			),
