@@ -71,7 +71,7 @@ class whatsapp extends \phpbb\notification\method\messenger_base
 		// Load all the users we need
 		$this->user_loader->load_users($user_ids);
 
-		global $phpbb_container;
+		global $config, $phpbb_container;
 		$wa = $phpbb_container->get('tas2580.whatsapp.helper');
 
 		// Time to go through the queue and send emails
@@ -92,6 +92,7 @@ class whatsapp extends \phpbb\notification\method\messenger_base
 			$this->template($template_dir_prefix . $notification->get_email_template(), $user['user_lang']);
 			$this->assign_vars(array_merge(array(
 				'USERNAME'				=> $user['username'],
+				'SITENAME'				=> htmlspecialchars_decode($config['sitename']),
 				'U_NOTIFICATION_SETTINGS'	=> generate_board_url() . '/ucp.' . $this->php_ext . '?i=ucp_notifications',
 			), $notification->get_email_template_variables()));
 
