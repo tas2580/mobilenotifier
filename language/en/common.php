@@ -47,6 +47,9 @@ $lang = array_merge($lang, array(
 	'ACP_SAVED'						=> 'Whatsapp settings updated.',
 	'WHATSAPP_NR'					=> 'Phone number',
 	'WHATSAPP_NR_EXPLAIN'				=> 'Select your country code and enter your Whatsapp phone number with without 0 at the beginning. <br />Example.: 123456789',
+	'ACP_CC_SELECT'					=> 'Default country code',
+	'ACP_CC_SELECT_EXPLAIN'			=> 'Set a default country code that is used if we can\'t get the country code from the hostname.',
+
 
 	// Country Codes
 	'CC_AD'	=> 'Andorra',

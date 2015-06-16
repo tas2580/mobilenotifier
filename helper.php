@@ -22,6 +22,9 @@ class helper
 	/** @var \phpbb\user\user */
 	protected $user;
 
+	/* @var \phpbb\request\request */
+	protected $request;
+
 	/** @var string phpbb_root_path */
 	protected $phpbb_root_path;
 
@@ -33,14 +36,16 @@ class helper
 	*
 	* @param \phpbb\config\config			$config				Config Object
 	* @param \phpbb\user					$user				User object
+	* @param \phpbb\request\request			$request				Request object
 	* @param string						$phpbb_root_path		phpbb_root_path
 	* @param string						$php_ext				php_ext
 	* @access public
 	*/
-	public function __construct(\phpbb\config\config $config, \phpbb\user $user, $phpbb_root_path, $php_ext)
+	public function __construct(\phpbb\config\config $config, \phpbb\user $user, \phpbb\request\request $request, $phpbb_root_path, $php_ext)
 	{
 		$this->config = $config;
 		$this->user = $user;
+		$this->request = $request;
 		$this->phpbb_root_path = $phpbb_root_path;
 		$this->php_ext = $php_ext;
 	}
@@ -97,6 +102,41 @@ class helper
 			$options .= '<option' . $selected . ' value="' . $cc . '">' . $data[0] . ' (+' . $data[1]  . ')</option>';
 		}
 		return $options;
+	}
+
+	/**
+	 * Try to get the country code from the users hostneme
+	 *
+	 * @return	string	country code
+	 */
+	public function get_cc()
+	{
+		$ip = $this->request->server('REMOTE_ADDR', '');
+		$host = strtolower(gethostbyaddr($ip));
+
+		// PECL geoip installed? Lets do it the easy way
+		if(function_exists('geoip_country_code_by_name'))
+		{
+			$cc = geoip_country_code_by_name($host);
+		}
+		else
+		{
+			// Get the CC from hostname and translate some providers with international domains
+			$hosts = array(
+				'.arcor-ip.net'	=> '.de',
+				'.t-dialin.net'	=> '.de',
+				'.sui-inter.net'	=> '.ch',
+				'.drei.com'		=> '.at',
+				'.proxad.net'	=> '.fr',
+				'.gaoland.net'	=> '.fr',
+				'.mchsi.com'	=> '.us',
+				'.comcast.net'	=> '.us',
+				'.as13285.net'	=> '.uk',
+				'.as29017.net'	=> '.uk',
+			);
+			$cc = substr(strrchr(strtr($host, $hosts), '.'), 1);
+		}
+		return (strlen($cc) == 2) ? $cc : $this->config['whatsapp_default_cc'];
 	}
 
 	/*

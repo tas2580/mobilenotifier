@@ -110,10 +110,7 @@ class listener implements EventSubscriberInterface
 	{
 		if(empty($whatsapp))
 		{
-			$lang_variable = $this->request->server('HTTP_ACCEPT_LANGUAGE', '');
-			$lang_variable = explode(';', $lang_variable);
-			$lang_variable = explode(',', $lang_variable[0]);
-			$cc = $lang_variable[0];
+			$cc = $this->wa->get_cc();
 		}
 		else
 		{

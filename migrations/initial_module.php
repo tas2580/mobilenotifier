@@ -18,6 +18,7 @@ class initial_module extends \phpbb\db\migration\migration
 			array('config.add', array('whatsapp_sender', '')),
 			array('config.add', array('whatsapp_password', '')),
 			array('config.add', array('whatsapp_status', '')),
+			array('config.add', array('whatsapp_default_cc', '')),
 
 			// Add ACP module
 			array('module.add', array(

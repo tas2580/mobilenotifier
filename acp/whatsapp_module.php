@@ -20,6 +20,7 @@ class whatsapp_module
 	global $config, $user, $template, $request, $phpbb_container, $phpbb_root_path, $phpEx;
 
 	$user->add_lang_ext('tas2580/whatsapp', 'common');
+	$wa = $phpbb_container->get('tas2580.whatsapp.helper');
 	$this->tpl_name = 'acp_whatsapp_body';
 	$this->page_title = $user->lang('ACP_WHATSAPP_TITLE');
 
@@ -36,9 +37,8 @@ class whatsapp_module
 		$config->set('whatsapp_sender', $request->variable('sender', ''));
 		$config->set('whatsapp_password', $request->variable('password', ''));
 		$config->set('whatsapp_status', $request->variable('status', ''));
+		$config->set('whatsapp_default_cc', $request->variable('default_cc', ''));
 
-
-		$wa = $phpbb_container->get('tas2580.whatsapp.helper');
 		$wa->update_status($config['whatsapp_status']);
 
 		if($request->file('image'))
@@ -62,6 +62,7 @@ class whatsapp_module
 		'SENDER'			=> isset($config['whatsapp_sender']) ? $config['whatsapp_sender'] : '',
 		'PASSWORD'		=> isset($config['whatsapp_password']) ? $config['whatsapp_password'] : '',
 		'STATUS'			=> isset($config['whatsapp_status']) ? $config['whatsapp_status'] : '',
+		'CC_SELECT'		=> $wa->cc_select(isset($config['whatsapp_default_cc']) ? $config['whatsapp_default_cc'] : ''),
 	));
     }
 }

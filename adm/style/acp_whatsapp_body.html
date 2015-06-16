@@ -2,7 +2,6 @@
 <h1>{L_ACP_WHATSAPP_TITLE}</h1>
 
 <form method="post" action="{U_ACTION}" enctype="multipart/form-data">
-
 <fieldset>
 	<legend>{L_ACP_SETTINGS}</legend>
 	<dl>
@@ -21,8 +20,10 @@
 		<dt><label for="image">{L_ACP_IMAGE}</label><br /><span>{L_ACP_IMAGE_EXPLAIN}</span></dt>
 		<dd><input name="image" id="image" type="file" accept="image/*" /></dd>
 	</dl>
-
-
+	<dl>
+		<dt><label for="default_cc">{L_ACP_CC_SELECT}</label><br /><span>{L_ACP_CC_SELECT_EXPLAIN}</span></dt>
+		<dd><select name="default_cc" id="default_cc" >{CC_SELECT}</select></dd>
+	</dl>
 </fieldset>
 
 <fieldset>
@@ -33,7 +34,5 @@
 	</p>
 	{S_FORM_TOKEN}
 </fieldset>
-
-
 </form>
 <!-- INCLUDE overall_footer.html -->
