@@ -9,8 +9,6 @@
 
 namespace tas2580\whatsapp\acp;
 
-use WhatsProt;
-
 class whatsapp_module
 {
     var $u_action;
@@ -45,12 +43,11 @@ class whatsapp_module
 		{
 			include_once($phpbb_root_path . 'includes/functions_upload.' . $phpEx);
 			$upload = new \fileupload();
-			$upload->set_allowed_extensions(array('jpg', 'png'));
+			$upload->set_allowed_extensions(array('jpg', 'png', 'gif'));
 			$file = $upload->form_upload('image');
 			if($file->filename)
 			{
 				$wa->update_picture($file->filename);
-
 			}
 		}
 

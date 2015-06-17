@@ -10,7 +10,6 @@
 
 namespace tas2580\whatsapp;
 
-
 class helper
 {
 	/* @var wa */
@@ -405,5 +404,4 @@ class helper
 		array_multisort($country_code, SORT_ASC,  0);
 		return $country_code;
 	}
-
 }
