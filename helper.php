@@ -95,7 +95,7 @@ class helper
 	{
 		$options = '';
 		$cc_array = $this->_country_code();
-		foreach($cc_array as $cc => $data)
+		foreach ($cc_array as $cc => $data)
 		{
 			$selected = ($cc == strtoupper($sel)) ? ' selected="selected"' : '';
 			$options .= '<option' . $selected . ' value="' . $cc . '">' . $data[0] . ' (+' . $data[1]  . ')</option>';
@@ -114,7 +114,7 @@ class helper
 		$host = strtolower(gethostbyaddr($ip));
 
 		// PECL geoip installed? Lets do it the easy way
-		if(function_exists('geoip_country_code_by_name'))
+		if (function_exists('geoip_country_code_by_name'))
 		{
 			$cc = geoip_country_code_by_name($host);
 		}
@@ -143,7 +143,7 @@ class helper
 	 */
 	private function _connect()
 	{
-		if(is_object($this->wa ))
+		if (is_object($this->wa ))
 		{
 			return;
 		}

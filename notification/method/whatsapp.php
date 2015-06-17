@@ -7,6 +7,7 @@
 *
 */
 namespace tas2580\whatsapp\notification\method;
+
 /**
 * Whatsapp notification method class
 * This class handles sending Whatsapp messages for notifications
@@ -116,7 +117,7 @@ class whatsapp extends \phpbb\notification\method\messenger_base
 		}
 
 		if (!trim($template_lang))
- 		{
+		{
 			// fall back to board default language if the user's language is
 			// missing $template_file.  If this does not exist either,
 			// $this->template->set_filenames will do a trigger_error

@@ -108,7 +108,7 @@ class listener implements EventSubscriberInterface
 	 */
 	private function add_field($whatsapp)
 	{
-		if(empty($whatsapp))
+		if (empty($whatsapp))
 		{
 			$cc = $this->wa->get_cc();
 		}
