@@ -13,4 +13,13 @@ namespace tas2580\mobilenotifier;
 */
 class ext extends \phpbb\extension\base
 {
+
+	function disable_step($old_state)
+	{
+		global $db;
+		$sql = 'DELETE FROM ' . USER_NOTIFICATIONS_TABLE . "
+			WHERE method = 'notification.method.mobilenotifier'";
+		$db->sql_query($sql);
+		return parent::enable_step($old_state);
+	}
 }
