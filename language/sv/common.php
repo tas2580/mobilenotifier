@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* @package phpBB Extension - tas2580 Whatsapp Notifier
+* @package phpBB Extension - tas2580 Mobile Notifier
 * @copyright (c) 2015 tas2580 (https://tas2580.net)
 * Swedish translation by Holger (https://www.maskinisten.net)
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
@@ -19,22 +19,22 @@ if (empty($lang) || !is_array($lang))
 }
 
 $lang = array_merge($lang, array(
-	'NOTIFICATION_METHOD_WHATSAPP'	=> 'Whatsapp',
-	'ACP_SETTINGS'					=> 'Inställningar',
-	'ACP_SENDER'						=> 'Avsändarens mobilnummer',
-	'ACP_SENDER_EXPLAIN'				=> 'Ange mobilnumret som skall användas som avsändare för Whatsapp-meddelandena.<br />Numret måste ha formatet <b>{Landprefix}{Riktnummer utan 0}{Nummer}</b>.<br />Ex.: 467012345678',
-	'ACP_PASSWORD'					=> 'Lösenord',
-	'ACP_PASSWORD_EXPLAIN'			=> 'Ange ditt Whatsapp-lösenord. Du kommer åt lösenordet enligt <a href="https://tas2580.net/page/whatsapp_passwort.html">denna beskrivning</a>.',
-	'ACP_STATUS'						=> 'Status',
-	'ACP_STATUS_EXPLAIN'				=> 'Ange en status för Whatsapp-kontakten.',
-	'ACP_IMAGE'						=> 'Avatar',
-	'ACP_IMAGE_EXPLAIN'				=> 'Ladda upp en avatar för Whatsapp-kontakten.',
-	'ACP_SUBMIT'						=> 'Spara inställningarna',
-	'ACP_SAVED'						=> 'Inställningarna har sparats.',
-	'WHATSAPP_NR'					=> 'Whatsapp-nummer',
-	'WHATSAPP_NR_EXPLAIN'				=> 'Ange mobilnumret (inkl. prefix utan 0) som du vill få Whatsapp-meddelandena till.',
-	'ACP_CC_SELECT'					=> 'Standard landkod',
-	'ACP_CC_SELECT_EXPLAIN'			=> 'Landkod som en användare erhåller om landkoden ej kan läsas ur användarens hostnamn.',
+	'NOTIFICATION_METHOD_MOBILENOTIFIER'	=> 'WhatsApp®',
+	'ACP_SETTINGS'						=> 'Inställningar',
+	'ACP_SENDER'							=> 'Avsändarens mobilnummer',
+	'ACP_SENDER_EXPLAIN'					=> 'Ange mobilnumret som skall användas som avsändare för Whatsapp-meddelandena.<br />Numret måste ha formatet <b>{Landprefix}{Riktnummer utan 0}{Nummer}</b>.<br />Ex.: 467012345678',
+	'ACP_PASSWORD'						=> 'Lösenord',
+	'ACP_PASSWORD_EXPLAIN'				=> 'Ange ditt Whatsapp-lösenord. Du kommer åt lösenordet enligt <a href="https://tas2580.net/page/whatsapp_passwort.html">denna beskrivning</a>.',
+	'ACP_STATUS'							=> 'Status',
+	'ACP_STATUS_EXPLAIN'					=> 'Ange en status för Whatsapp-kontakten.',
+	'ACP_IMAGE'							=> 'Avatar',
+	'ACP_IMAGE_EXPLAIN'					=> 'Ladda upp en avatar för Whatsapp-kontakten.',
+	'ACP_SUBMIT'							=> 'Spara inställningarna',
+	'ACP_SAVED'							=> 'Inställningarna har sparats.',
+	'WHATSAPP_NR'						=> 'Whatsapp-nummer',
+	'WHATSAPP_NR_EXPLAIN'					=> 'Ange mobilnumret (inkl. prefix utan 0) som du vill få Whatsapp-meddelandena till.',
+	'ACP_CC_SELECT'						=> 'Standard landkod',
+	'ACP_CC_SELECT_EXPLAIN'				=> 'Landkod som en användare erhåller om landkoden ej kan läsas ur användarens hostnamn.',
 
 	// Country Codes
 	'CC_AD'		=> 'Andorra',

@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* @package phpBB Extension - tas2580 Whatsapp Notifier
+* @package phpBB Extension - tas2580 Mobile Notifier
 * @copyright (c) 2015 tas2580 (https://tas2580.net)
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
@@ -33,22 +33,22 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 $lang = array_merge($lang, array(
-	'NOTIFICATION_METHOD_WHATSAPP'	=> 'Whatsapp',
-	'ACP_SETTINGS'					=> 'Settings',
-	'ACP_SENDER'						=> 'Sender phone number',
-	'ACP_SENDER_EXPLAIN'				=> 'Enter the phone number with country code and without 0 at the beginning from that the Whatsapps should to be sent. <br />Example.: 49123456789',
-	'ACP_PASSWORD'					=> 'Password',
-	'ACP_PASSWORD_EXPLAIN'			=> 'Enter your Whatsapp Password.',
-	'ACP_STATUS'						=> 'Status',
-	'ACP_STATUS_EXPLAIN'				=> 'Enter your Whatsapp status.',
-	'ACP_IMAGE'						=> 'Avatar',
-	'ACP_IMAGE_EXPLAIN'				=> 'Upload an avatar image for your Whatsapp user.',
-	'ACP_SUBMIT'						=> 'Update settings',
-	'ACP_SAVED'						=> 'Whatsapp settings updated.',
-	'WHATSAPP_NR'					=> 'Phone number',
-	'WHATSAPP_NR_EXPLAIN'				=> 'Select your country code and enter your Whatsapp phone number with without 0 at the beginning. <br />Example.: 123456789',
-	'ACP_CC_SELECT'					=> 'Default country code',
-	'ACP_CC_SELECT_EXPLAIN'			=> 'Set a default country code that is used if we can\'t get the country code from the hostname.',
+	'NOTIFICATION_METHOD_MOBILENOTIFIER'	=> 'WhatsApp®',
+	'ACP_SETTINGS'						=> 'Settings',
+	'ACP_SENDER'							=> 'Sender phone number',
+	'ACP_SENDER_EXPLAIN'					=> 'Enter the phone number with country code and without 0 at the beginning from that the WhatsApp® should to be sent. <br />Example.: 49123456789',
+	'ACP_PASSWORD'						=> 'Password',
+	'ACP_PASSWORD_EXPLAIN'				=> 'Enter your WhatsApp® Password.',
+	'ACP_STATUS'							=> 'Status',
+	'ACP_STATUS_EXPLAIN'					=> 'Enter your WhatsApp® status.',
+	'ACP_IMAGE'							=> 'Avatar',
+	'ACP_IMAGE_EXPLAIN'					=> 'Upload an avatar image for your WhatsApp® user.',
+	'ACP_SUBMIT'							=> 'Update settings',
+	'ACP_SAVED'							=> 'WhatsApp® settings updated.',
+	'WHATSAPP_NR'						=> 'Phone number',
+	'WHATSAPP_NR_EXPLAIN'					=> 'Select your country code and enter your WhatsApp® phone number with without 0 at the beginning. <br />Example.: 123456789',
+	'ACP_CC_SELECT'						=> 'Default country code',
+	'ACP_CC_SELECT_EXPLAIN'				=> 'Set a default country code that is used if we can\'t get the country code from the hostname.',
 
 
 	// Country Codes

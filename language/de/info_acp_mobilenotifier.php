@@ -1,9 +1,8 @@
 <?php
 /**
 *
-* @package phpBB Extension - tas2580 Whatsapp Notifier
+* @package phpBB Extension - tas2580 Mobile Notifier
 * @copyright (c) 2015 tas2580 (https://tas2580.net)
-* Swedish translation by Holger (https://www.maskinisten.net
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
@@ -34,5 +33,5 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 $lang = array_merge($lang, array(
-	'ACP_WHATSAPP_TITLE'	=> 'Whatsapp-meddelanden',
+	'ACP_MOBILENOTIFIER_TITLE'	=> 'Mobile Notifier',
 ));

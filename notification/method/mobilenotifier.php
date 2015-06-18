@@ -1,18 +1,18 @@
 <?php
 /**
 *
-* @package phpBB Extension - tas2580 Whatsapp Notifier
+* @package phpBB Extension - tas2580 Mobile Notifier
 * @copyright (c) 2015 tas2580 (https://tas2580.net)
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
-namespace tas2580\whatsapp\notification\method;
+namespace tas2580\mobilenotifier\notification\method;
 
 /**
 * Whatsapp notification method class
 * This class handles sending Whatsapp messages for notifications
 */
-class whatsapp extends \phpbb\notification\method\messenger_base
+class mobilenotifier extends \phpbb\notification\method\messenger_base
 {
 	/**
 	* Get notification method name
@@ -21,8 +21,8 @@ class whatsapp extends \phpbb\notification\method\messenger_base
 	*/
 	public function get_type()
 	{
-		$this->user->add_lang_ext('tas2580/whatsapp', 'common');
-		return 'notification.method.whatsapp';
+		$this->user->add_lang_ext('tas2580/mobilenotifier', 'common');
+		return 'notification.method.mobilenotifier';
 	}
 	/**
 	* Is this method available for the user?
@@ -73,7 +73,7 @@ class whatsapp extends \phpbb\notification\method\messenger_base
 		$this->user_loader->load_users($user_ids);
 
 		global $config, $phpbb_container;
-		$wa = $phpbb_container->get('tas2580.whatsapp.helper');
+		$wa = $phpbb_container->get('tas2580.mobilenotifier.whatsapp.helper');
 
 		// Time to go through the queue and send emails
 		foreach ($this->queue as $notification)

@@ -1,6 +1,6 @@
 services:
-    tas2580.whatsapp.listener:
-        class: tas2580\whatsapp\event\listener
+    tas2580.mobilenotifier.listener:
+        class: tas2580\mobilenotifier\event\listener
         arguments:
             - @request
             - @user
@@ -9,16 +9,16 @@ services:
             - %core.root_path%
         tags:
             - { name: event.listener }
-    tas2580.whatsapp.helper:
-        class: tas2580\whatsapp\helper
+    tas2580.mobilenotifier.src.helper:
+        class: tas2580\mobilenotifier\src\helper
         arguments:
             - @config
             - @user
             - @request
             - %core.root_path%
             - %core.php_ext%
-    notification.method.whatsapp:
-        class: tas2580\whatsapp\notification\method\whatsapp
+    notification.method.mobilenotifier:
+        class: tas2580\mobilenotifier\notification\method\mobilenotifier
         scope: prototype
         arguments:
             - @user_loader

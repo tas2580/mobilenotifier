@@ -1,15 +1,15 @@
 <?php
 /**
 *
-* @package phpBB Extension - tas2580 Whatsapp Notifier
+* @package phpBB Extension - tas2580 Mobile Notifier
 * @copyright (c) 2015 tas2580 (https://tas2580.net)
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
 
-namespace tas2580\whatsapp\acp;
+namespace tas2580\mobilenotifier\acp;
 
-class whatsapp_module
+class mobilenotifier_module
 {
 	var $u_action;
 
@@ -17,17 +17,17 @@ class whatsapp_module
 	{
 		global $config, $user, $template, $request, $phpbb_container, $phpbb_root_path, $phpEx;
 
-		$user->add_lang_ext('tas2580/whatsapp', 'common');
-		$wa = $phpbb_container->get('tas2580.whatsapp.helper');
-		$this->tpl_name = 'acp_whatsapp_body';
-		$this->page_title = $user->lang('ACP_WHATSAPP_TITLE');
+		$user->add_lang_ext('tas2580/mobilenotifier', 'common');
+		$wa = $phpbb_container->get('tas2580.mobilenotifier.src.helper');
+		$this->tpl_name = 'acp_mobilenotifier_body';
+		$this->page_title = $user->lang('ACP_MOBILENOTIFIER_TITLE');
 
-		add_form_key('acp_whatsapp');
+		add_form_key('acp_mobilenotifier');
 
 		// Form is submitted
 		if ($request->is_set_post('submit'))
 		{
-			if (!check_form_key('acp_whatsapp'))
+			if (!check_form_key('acp_mobilenotifier'))
 			{
 				trigger_error($user->lang('FORM_INVALID') . adm_back_link($this->u_action), E_USER_WARNING);
 			}
@@ -45,7 +45,7 @@ class whatsapp_module
 				$upload = new \fileupload();
 				$upload->set_allowed_extensions(array('jpg', 'png', 'gif'));
 				$file = $upload->form_upload('image');
-				if($file->filename)
+				if ($file->filename)
 				{
 					$wa->update_picture($file->filename);
 				}

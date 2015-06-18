@@ -1,13 +1,13 @@
 <?php
 /**
 *
-* @package phpBB Extension - tas2580 Whatsapp Notifier
+* @package phpBB Extension - tas2580 Mobile Notifier
 * @copyright (c) 2015 tas2580 (https://tas2580.net)
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
 
-namespace tas2580\whatsapp\migrations;
+namespace tas2580\mobilenotifier\migrations;
 
 class initial_module extends \phpbb\db\migration\migration
 {
@@ -30,7 +30,7 @@ class initial_module extends \phpbb\db\migration\migration
 				'acp',
 				'ACP_WHATSAPP_TITLE',
 				array(
-					'module_basename'	=> '\tas2580\whatsapp\acp\whatsapp_module',
+					'module_basename'	=> '\tas2580\mobilenotifier\acp\mobilenotifier_module',
 					'modes'				=> array('settings'),
 				),
 			)),

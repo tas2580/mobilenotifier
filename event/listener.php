@@ -1,13 +1,13 @@
 <?php
 /**
 *
-* @package phpBB Extension - tas2580 Whatsapp Notifier
+* @package phpBB Extension - tas2580 Mobile Notifier
 * @copyright (c) 2015 tas2580 (https://tas2580.net)
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
 
-namespace tas2580\whatsapp\event;
+namespace tas2580\mobilenotifier\event;
 
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -44,12 +44,12 @@ class listener implements EventSubscriberInterface
 	*/
 	public function __construct(\phpbb\request\request $request, \phpbb\user $user, \phpbb\template\template $template, Container $phpbb_container, $phpbb_root_path)
 	{
-		$user->add_lang_ext('tas2580/whatsapp', 'common');
+		$user->add_lang_ext('tas2580/mobilenotifier', 'common');
 		$this->request = $request;
 		$this->user = $user;
 		$this->template = $template;
 		$this->phpbb_root_path = $phpbb_root_path;
-		$this->wa = $phpbb_container->get('tas2580.whatsapp.helper');
+		$this->wa = $phpbb_container->get('tas2580.mobilenotifier.src.helper');
 	}
 
 	/**

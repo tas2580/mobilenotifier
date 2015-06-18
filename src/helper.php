@@ -1,14 +1,14 @@
 <?php
 /**
 *
-* @package phpBB Extension - tas2580 Whatsapp Notifier
+* @package phpBB Extension - tas2580 Mobile Notifier
 * @copyright (c) 2015 tas2580 (https://tas2580.net)
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
 
 
-namespace tas2580\whatsapp;
+namespace tas2580\mobilenotifier\src;
 
 class helper
 {
@@ -61,7 +61,7 @@ class helper
 		$cc_array = $this->_country_code();
 		$cc = substr($dst, 0, 2);
 		$whatsapp = substr($dst, 2);
-		$this->wa->sendMessage($cc_array[$cc][1] . $whatsapp, $msg);
+		$this->wa->send($cc_array[$cc][1] . $whatsapp, $msg);
 	}
 
 	/*
@@ -72,7 +72,7 @@ class helper
 	public function update_status($status)
 	{
 		$this->_connect();
-		$this->wa->sendStatusUpdate($status);
+		$this->wa->set_status($status);
 	}
 
 	/*
@@ -83,7 +83,23 @@ class helper
 	public function update_picture($pic)
 	{
 		$this->_connect();
-		$this->wa->sendSetProfilePicture($pic);
+		$this->wa->set_picture($pic);
+	}
+
+	/*
+	 * Connect to Whatsapp
+	 */
+	private function _connect()
+	{
+		if (is_object($this->wa ))
+		{
+			return;
+		}
+
+		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/whatsapp.' . $this->php_ext);
+		$this->wa = new whatsapp($this->config['whatsapp_sender'], '');
+		$this->wa->connect();
+		$this->wa->login($this->config['whatsapp_password']);
 	}
 
 	/*
@@ -136,22 +152,6 @@ class helper
 			$cc = substr(strrchr(strtr($host, $hosts), '.'), 1);
 		}
 		return (strlen($cc) == 2) ? $cc : $this->config['whatsapp_default_cc'];
-	}
-
-	/*
-	 * Connect to Whatsapp
-	 */
-	private function _connect()
-	{
-		if (is_object($this->wa ))
-		{
-			return;
-		}
-
-		require_once($this->phpbb_root_path . 'ext/tas2580/whatsapp/vendor/mgp25/whatsapi/src/whatsprot.class.' . $this->php_ext);
-		$this->wa = new \WhatsProt($this->config['whatsapp_sender'], '');
-		$this->wa->connect();
-		$this->wa->loginWithPassword($this->config['whatsapp_password']);
 	}
 
 	/*
