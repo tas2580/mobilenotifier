@@ -42,7 +42,8 @@ or in german on <a href="https://www.phpbb.de/community/viewtopic.php?f=149&t=23
 
 Help to translate
 -----------------
-If you use the extension in your forum and translated it therefor in your language, it would be nice if you would send me a <a href="https://help.github.com/articles/using-pull-requests/">pull request</a>. Also it may be that existing translations after uptates of the extensions are incomplete. So you can help me if you complete or correct existing language files.
+If you use the extension in your forum and translated it therefor in your language, it would be nice if you would send me a <a href="https://help.github.com/articles/using-pull-requests/">pull request</a>.
+Also it may be that existing translations after uptates of the extensions are incomplete. So you can help me if you complete or correct existing language files.
 
 LICENSE
 -------
