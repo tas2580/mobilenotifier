@@ -1,21 +1,21 @@
-<img src="https://tas2580.net/downloads/image-14.png" width="600" height="80" alt="phpBB 3.1 - Whatsapp notifier" />
+<img src="https://tas2580.net/downloads/image-14.png" width="600" height="80" alt="phpBB 3.1 - Mobile notifier" />
 
 This is an extension for the phpBB forums software. You need an instalation of phpBB 3.1.x to use this.
 
 DESCRIPTION
 -------
-This Extension adds a new notifier type. Your users can enter a phone number in there profile and can get notifications on Whatsapp.
+This Extension adds a new notifier type. Your users can enter a phone number in there profile and can get notifications on WhatsApp®.
 
 INSTALATION
 ----------
-To install this extension download it from here and upload the files in your forum under <b>/ext/tas2580/whatsapp</b>.
+To install this extension download it from here and upload the files in your forum under <b>/ext/tas2580/mobilenotifier</b>.
 After that go to the Admin panel of your forum and navigate in to Customise -> Extension Management -> Extensions. Search
 this extension in the list of extensions and click on Enable.
 
 GET THE PASSWORD
 ----------------
-To configure your Whatsapp account that should send the notifications you need a phone number that does not use Whatsapp because you can
-use Whatsapp only on one device at the same time. Also you need your Whatsapp password, as a Windows user you can use <a href="https://github.com/mgp25/WART">WART</a> to get it.
+To configure your WhatsApp® account that should send the notifications you need a phone number that does not use WhatsApp® because you can
+use WhatsApp® only on one device at the same time. Also you need your WhatsApp® password, as a Windows user you can use <a href="https://github.com/mgp25/WART">WART</a> to get it.
 As a Linux user you can use yowsup to get it.
 
 To install yowsup type:
