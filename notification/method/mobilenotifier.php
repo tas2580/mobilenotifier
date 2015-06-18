@@ -73,7 +73,7 @@ class mobilenotifier extends \phpbb\notification\method\messenger_base
 		$this->user_loader->load_users($user_ids);
 
 		global $config, $phpbb_container;
-		$wa = $phpbb_container->get('tas2580.mobilenotifier.whatsapp.helper');
+		$wa = $phpbb_container->get('tas2580.mobilenotifier.src.helper');
 
 		// Time to go through the queue and send emails
 		foreach ($this->queue as $notification)
