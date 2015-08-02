@@ -24,11 +24,11 @@ class initial_module extends \phpbb\db\migration\migration
 			array('module.add', array(
 				'acp',
 				'ACP_CAT_DOT_MODS',
-				'ACP_WHATSAPP_TITLE'
+				'ACP_MOBILENOTIFIER_TITLE'
 			)),
 			array('module.add', array(
 				'acp',
-				'ACP_WHATSAPP_TITLE',
+				'ACP_MOBILENOTIFIER_TITLE',
 				array(
 					'module_basename'	=> '\tas2580\mobilenotifier\acp\mobilenotifier_module',
 					'modes'				=> array('settings'),
