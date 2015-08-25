@@ -133,7 +133,9 @@ class whatsapp
 			$this->send_node($data);
 			$this->reader->setKey($this->input_key);
 			$this->writer->setKey($this->output_key);
-			while (!$this->poll_message()) {};
+			while (!$this->poll_message())
+			{
+			}
 		}
 
 		if ($this->login_status === false)
@@ -293,7 +295,7 @@ class whatsapp
 		{
 			$this->poll_message();
 		}
-		while(($this->server_received_id !== $id) && (time() - $time < $timeout));
+		while (($this->server_received_id !== $id) && (time() - $time < $timeout));
 	}
 
 	/**
@@ -381,11 +383,11 @@ class whatsapp
 			{
 				$this->challenge_data = $node->getData();
 			}
-			elseif ($node->getTag() == 'failure')
+			else if ($node->getTag() == 'failure')
 			{
 				$this->login_status =  false;
 			}
-			elseif (($node->getTag() == 'success') && ($node->getAttribute('status') == 'active'))
+			else if (($node->getTag() == 'success') && ($node->getAttribute('status') == 'active'))
 			{
 				$this->login_status = true;
 			}
@@ -428,7 +430,7 @@ class whatsapp
 			$buff = socket_read($this->socket, $treeLength);
 			$len = strlen($buff);
 
-			while(strlen($buff) < $treeLength)
+			while (strlen($buff) < $treeLength)
 			{
 				$toRead = $treeLength - strlen($buff);
 				$buff .= socket_read($this->socket, $toRead);
@@ -516,10 +518,12 @@ class whatsapp
 function wa_pbkdf2($algorithm, $password, $salt, $count, $key_length, $raw_output = false)
 {
 	$algorithm = strtolower($algorithm);
-	if ( ! in_array($algorithm, hash_algos(), true)) {
+	if ( !in_array($algorithm, hash_algos(), true))
+	{
 		die('PBKDF2 ERROR: Invalid hash algorithm.');
 	}
-	if ($count <= 0 || $key_length <= 0) {
+	if ($count <= 0 || $key_length <= 0)
+	{
 		die('PBKDF2 ERROR: Invalid parameters.');
 	}
 
@@ -559,7 +563,7 @@ class KeyStream
 		$array  = array("key", "key", "key", "key");
 		$array2 = array(1, 2, 3, 4);
 		$nonce .= '0';
-		for($j = 0; $j < count($array); $j++)
+		for ($j = 0; $j < count($array); $j++)
 		{
 			$nonce[(strlen($nonce) - 1)] = chr($array2[$j]);
 			$foo = wa_pbkdf2("sha1", $password, $nonce, 2, 20, true);
@@ -572,7 +576,8 @@ class KeyStream
 	{
 		$mac = $this->computeMac($buffer, $offset, $length);
 		//validate mac
-		for ($i = 0; $i < 4; $i++) {
+		for ($i = 0; $i < 4; $i++)
+		{
 			$foo = ord($buffer[$macOffset + $i]);
 			$bar = ord($mac[$i]);
 			if ($foo !== $bar)
@@ -610,7 +615,7 @@ class rc4
 	public function __construct($key, $drop)
 	{
 		$this->s = range(0, 255);
-		for($i = 0, $j = 0; $i < 256; $i++)
+		for ($i = 0, $j = 0; $i < 256; $i++)
 		{
 			$k = ord($key{$i % strlen($key)});
 			$j = ($j + $k + $this->s[$i]) & 255;
@@ -973,21 +978,21 @@ class BinTreeNodeReader
 		{
 			$ret = $this->getToken($token);
 		}
-		elseif ($token == 0)
+		else if ($token == 0)
 		{
 			$ret = "";
 		}
-		elseif ($token == 0xfc)
+		else if ($token == 0xfc)
 		{
 			$size = $this->readInt8();
 			$ret  = $this->fillArray($size);
 		}
-		elseif ($token == 0xfd)
+		else if ($token == 0xfd)
 		{
 			$size = $this->readInt24();
 			$ret  = $this->fillArray($size);
 		}
-		elseif ($token == 0xfa)
+		else if ($token == 0xfa)
 		{
 			$user   = $this->readString($this->readInt8());
 			$server = $this->readString($this->readInt8());
@@ -1000,7 +1005,7 @@ class BinTreeNodeReader
 				$ret = $server;
 			}
 		}
-		elseif ($token == 0xff)
+		else if ($token == 0xff)
 		{
 			$ret = $this->readNibble();
 		}
