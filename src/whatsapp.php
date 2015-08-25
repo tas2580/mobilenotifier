@@ -1000,7 +1000,7 @@ class BinTreeNodeReader
 			{
 				$ret = $user . "@" . $server;
 			}
-			elseif (strlen($server) > 0)
+			else if (strlen($server) > 0)
 			{
 				$ret = $server;
 			}
@@ -1079,7 +1079,7 @@ class BinTreeNodeReader
 		{
 			return $this->readInt8();
 		}
-		elseif ($token == 0xf9)
+		else if ($token == 0xf9)
 		{
 			return $this->readInt16();
 		}
@@ -1285,7 +1285,7 @@ class BinTreeNodeWriter
 		{
 			$this->output .= chr($token);
 		}
-		elseif ($token <= 0x1f4)
+		else if ($token <= 0x1f4)
 		{
 			$this->output .= "\xfe" . chr($token - 0xf5);
 		}
