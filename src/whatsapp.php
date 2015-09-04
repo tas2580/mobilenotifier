@@ -12,7 +12,7 @@ namespace tas2580\mobilenotifier\src;
 
 define('WA_SERVER', 's.whatsapp.net');
 define('WA_DEVICE', 'S40');
-define('WA_VER', '2.12.82');
+define('WA_VER', '2.12.96');
 define('WA_PORT', '80');
 //define('WA_PORT', '443');
 
@@ -1038,7 +1038,7 @@ class BinTreeNodeReader
 			$attributes = $this->readAttributes($size);
 			return new protocol_node("start", $attributes, null, "");
 		}
-		elseif ($token == 2)
+		else if ($token == 2)
 		{
 			return null;
 		}
