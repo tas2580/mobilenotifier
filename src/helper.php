@@ -104,8 +104,7 @@ class helper
 		{
 			return;
 		}
-
-
+		
 		$this->wa = new whatsapp($this->config['whatsapp_sender'], '');
 		$this->wa->connect();
 		$this->wa->login($this->config['whatsapp_password']);
