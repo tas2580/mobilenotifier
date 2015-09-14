@@ -55,6 +55,7 @@ class mobilenotifier_module
 		}
 
 		$template->assign_vars(array(
+			'WA_VERSION'		=> WA_VER,
 			'U_ACTION'		=> $this->u_action,
 			'SENDER'			=> isset($config['whatsapp_sender']) ? $config['whatsapp_sender'] : '',
 			'PASSWORD'		=> isset($config['whatsapp_password']) ? $config['whatsapp_password'] : '',
