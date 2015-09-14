@@ -16,7 +16,7 @@ class mobilenotifier_info
 		return array(
 			'filename'		=> '\tas2580\mobilenotifier\mobilenotifier_module',
 			'title'			=> 'ACP_MOBILENOTIFIER_TITLE',
-			'version'		=> '0.1.2',
+			'version'		=> '0.2.1',
 			'modes'		=> array(
 				'settings'		=> array(
 					'title'		=> 'ACP_MOBILENOTIFIER_TITLE',

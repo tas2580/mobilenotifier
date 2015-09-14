@@ -45,6 +45,7 @@ $lang = array_merge($lang, array(
 	'ACP_IMAGE_EXPLAIN'					=> 'Upload an avatar image for your WhatsApp® user.',
 	'ACP_SUBMIT'							=> 'Update settings',
 	'ACP_SAVED'							=> 'WhatsApp® settings updated.',
+	'ACP_WA_VERSION'						=> 'WhatsApp® Version',
 	'WHATSAPP_NR'						=> 'Phone number',
 	'WHATSAPP_NR_EXPLAIN'					=> 'Select your country code and enter your WhatsApp® phone number with without 0 at the beginning. <br />Example.: 123456789',
 	'ACP_CC_SELECT'						=> 'Default country code',

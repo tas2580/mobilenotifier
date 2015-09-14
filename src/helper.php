@@ -42,11 +42,13 @@ class helper
 	*/
 	public function __construct(\phpbb\config\config $config, \phpbb\user $user, \phpbb\request\request $request, $phpbb_root_path, $php_ext)
 	{
+
 		$this->config = $config;
 		$this->user = $user;
 		$this->request = $request;
 		$this->phpbb_root_path = $phpbb_root_path;
 		$this->php_ext = $php_ext;
+		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/whatsapp.' . $this->php_ext);
 	}
 
 	/*
@@ -96,7 +98,7 @@ class helper
 			return;
 		}
 
-		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/whatsapp.' . $this->php_ext);
+
 		$this->wa = new whatsapp($this->config['whatsapp_sender'], '');
 		$this->wa->connect();
 		$this->wa->login($this->config['whatsapp_password']);

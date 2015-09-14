@@ -30,10 +30,12 @@ $lang = array_merge($lang, array(
 	'ACP_IMAGE_EXPLAIN'					=> 'Lade ein Bild hoch das der WhatsApp® Kontakt als Avatar verwendet.',
 	'ACP_SUBMIT'							=> 'Einstellungen speichern',
 	'ACP_SAVED'							=> 'Die Einstellungen wurden gespeichert.',
+	'ACP_WA_VERSION'						=> 'WhatsApp® Version',
 	'WHATSAPP_NR'						=> 'WhatsApp® Nummer',
 	'WHATSAPP_NR_EXPLAIN'					=> 'Gib die Telefon Nummer (incl. Vorwahl ohne 0) an auf der du WhatsApp® Benachichtigungen empfangen möchtest.',
 	'ACP_CC_SELECT'						=> 'Standard Country Code',
 	'ACP_CC_SELECT_EXPLAIN'				=> 'Country Code der einem Benutzer vorgegeben wird falls der Contry Code nicht aus dem Hostname des Benutzers ausgelesen werden kann.',
+	'NOT_UPLOADED'						=> 'Der Upload ist fehlgeschlagen!',
 
 	// Country Codes
 	'CC_AD'		=> 'Andorra',
