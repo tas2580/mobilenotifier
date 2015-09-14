@@ -48,6 +48,13 @@ class helper
 		$this->request = $request;
 		$this->phpbb_root_path = $phpbb_root_path;
 		$this->php_ext = $php_ext;
+		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/functions.' . $this->php_ext);
+		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/keystream.' . $this->php_ext);
+		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/tokenmap.' . $this->php_ext);
+		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/protocol_node.' . $this->php_ext);
+		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/writer.' . $this->php_ext);
+		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/reader.' . $this->php_ext);
+		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/rc4.' . $this->php_ext);
 		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/whatsapp.' . $this->php_ext);
 	}
 
