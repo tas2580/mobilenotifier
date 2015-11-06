@@ -23,6 +23,11 @@
 		"display-name": "tas2580 Mobile Notifier",
 		"soft-require": {
 			"phpbb/phpbb": ">=3.1.4,<3.2.*@dev"
+		},
+		"version-check": {
+			"host": "phpbb-versionscheck.cf",
+			"directory": "/tas2580/mobilenotifier/master",
+			"filename": "version-check.json"
 		}
 	}
 }
