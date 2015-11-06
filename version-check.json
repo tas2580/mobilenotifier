@@ -1,0 +1,11 @@
+{
+	"stable": {
+		"0.2": {
+			"current": "0.2.1",
+			"download": "https://tas2580.net/downloads/phpbb-mobile-notifier/",
+			"announcement": "",
+			"eol": null,
+			"security": false
+		}
+	}
+}
