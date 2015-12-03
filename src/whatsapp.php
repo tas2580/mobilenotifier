@@ -194,7 +194,7 @@ class whatsapp
 	{
 		$body_node = new protocol_node('body', null, null, $text);
 		$id = $this->send_message_node($to, $body_node, $id);
-		$this->wait_for_server($id);
+		//$this->wait_for_server($id);
 
 		return $id;
 	}
