@@ -12,7 +12,7 @@ namespace tas2580\mobilenotifier\src;
 
 define('WA_SERVER', 's.whatsapp.net');
 define('WA_DEVICE', 'S40');
-define('WA_VER', '2.12.96');
+define('WA_VER', '2.13.21');
 define('WA_PORT', '80');
 //define('WA_PORT', '443');
 
@@ -194,7 +194,7 @@ class whatsapp
 	{
 		$body_node = new protocol_node('body', null, null, $text);
 		$id = $this->send_message_node($to, $body_node, $id);
-		$this->wait_for_server($id);
+		//$this->wait_for_server($id);
 
 		return $id;
 	}
