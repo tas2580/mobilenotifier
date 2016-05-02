@@ -1,6 +1,12 @@
 <!-- INCLUDE overall_header.html -->
 <h1>{L_ACP_MOBILENOTIFIER_TITLE}</h1>
 
+<!-- IF !DATA_WRITABLE -->
+<div class="errorbox">
+	{DATA_FOLDER_NOT_WRITABLE}
+</div>
+<!-- ENDIF -->
+
 <form method="post" action="{U_ACTION}" enctype="multipart/form-data">
 <fieldset>
 	<legend>{L_ACP_SETTINGS}</legend>
@@ -29,7 +35,7 @@
 		<dd>{WA_VERSION}</dd>
 	</dl>
 </fieldset>
-
+<!-- IF DATA_WRITABLE -->
 <fieldset>
 	<legend>{L_ACP_SUBMIT}</legend>
 	<p class="submit-buttons">
@@ -38,5 +44,6 @@
 	</p>
 	{S_FORM_TOKEN}
 </fieldset>
+<!-- ENDIF -->
 </form>
 <!-- INCLUDE overall_footer.html -->

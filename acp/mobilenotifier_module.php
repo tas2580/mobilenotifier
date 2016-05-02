@@ -21,6 +21,7 @@ class mobilenotifier_module
 		$wa = $phpbb_container->get('tas2580.mobilenotifier.src.helper');
 		$this->tpl_name = 'acp_mobilenotifier_body';
 		$this->page_title = $user->lang('ACP_MOBILENOTIFIER_TITLE');
+		$data_foler = $phpbb_root_path . 'ext/tas2580/mobilenotifier/vendor/Chat-API/wadata';
 
 		add_form_key('acp_mobilenotifier');
 
@@ -55,12 +56,14 @@ class mobilenotifier_module
 		}
 
 		$template->assign_vars(array(
-			'WA_VERSION'		=> WA_VER,
-			'U_ACTION'		=> $this->u_action,
-			'SENDER'			=> isset($config['whatsapp_sender']) ? $config['whatsapp_sender'] : '',
-			'PASSWORD'		=> isset($config['whatsapp_password']) ? $config['whatsapp_password'] : '',
-			'STATUS'			=> isset($config['whatsapp_status']) ? $config['whatsapp_status'] : '',
-			'CC_SELECT'		=> $wa->cc_select(isset($config['whatsapp_default_cc']) ? $config['whatsapp_default_cc'] : ''),
+			'DATA_WRITABLE'				=> is_writable($data_foler),
+			'DATA_FOLDER_NOT_WRITABLE'	=> $user->lang('DATA_FOLDER_NOT_WRITABLE', $data_foler),
+			'WA_VERSION'					=> \Constants::WHATSAPP_VER,
+			'U_ACTION'					=> $this->u_action,
+			'SENDER'						=> isset($config['whatsapp_sender']) ? $config['whatsapp_sender'] : '',
+			'PASSWORD'					=> isset($config['whatsapp_password']) ? $config['whatsapp_password'] : '',
+			'STATUS'						=> isset($config['whatsapp_status']) ? $config['whatsapp_status'] : '',
+			'CC_SELECT'					=> $wa->cc_select(isset($config['whatsapp_default_cc']) ? $config['whatsapp_default_cc'] : ''),
 		));
 	}
 }

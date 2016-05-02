@@ -36,7 +36,7 @@ $lang = array_merge($lang, array(
 	'ACP_CC_SELECT'						=> 'Standard Country Code',
 	'ACP_CC_SELECT_EXPLAIN'				=> 'Country Code der einem Benutzer vorgegeben wird falls der Contry Code nicht aus dem Hostname des Benutzers ausgelesen werden kann.',
 	'NOT_UPLOADED'						=> 'Der Upload ist fehlgeschlagen!',
-
+	'DATA_FOLDER_NOT_WRITABLE'			=> 'Der Datenordner <strong>%s</strong> ist nicht beschreibbar!',
 	// Country Codes
 	'CC_AD'		=> 'Andorra',
 	'CC_AE'		=> 'Vereinigte Arabische Emirate',
