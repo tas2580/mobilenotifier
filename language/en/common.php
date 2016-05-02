@@ -50,7 +50,7 @@ $lang = array_merge($lang, array(
 	'WHATSAPP_NR_EXPLAIN'					=> 'Select your country code and enter your WhatsApp® phone number with without 0 at the beginning. <br />Example.: 123456789',
 	'ACP_CC_SELECT'						=> 'Default country code',
 	'ACP_CC_SELECT_EXPLAIN'				=> 'Set a default country code that is used if we can\'t get the country code from the hostname.',
-
+	'DATA_FOLDER_NOT_WRITABLE'			=> 'The data folder <strong>%s</strong> is not writeable!',
 
 	// Country Codes
 	'CC_AD'	=> 'Andorra',

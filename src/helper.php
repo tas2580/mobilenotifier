@@ -48,14 +48,7 @@ class helper
 		$this->request = $request;
 		$this->phpbb_root_path = $phpbb_root_path;
 		$this->php_ext = $php_ext;
-		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/functions.' . $this->php_ext);
-		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/keystream.' . $this->php_ext);
-		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/tokenmap.' . $this->php_ext);
-		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/protocol_node.' . $this->php_ext);
-		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/writer.' . $this->php_ext);
-		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/reader.' . $this->php_ext);
-		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/rc4.' . $this->php_ext);
-		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/src/whatsapp.' . $this->php_ext);
+		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/vendor/Chat-API/whatsprot.class.' . $this->php_ext);
 	}
 
 	/*
@@ -70,7 +63,7 @@ class helper
 		$cc_array = $this->_country_code();
 		$cc = substr($dst, 0, 2);
 		$whatsapp = substr($dst, 2);
-		$this->wa->send($cc_array[$cc][1] . $whatsapp, $msg);
+		$this->wa->sendMessage($cc_array[$cc][1] . $whatsapp, $msg);
 	}
 
 	/*
@@ -81,7 +74,7 @@ class helper
 	public function update_status($status)
 	{
 		$this->_connect();
-		$this->wa->set_status($status);
+		$this->wa->sendStatusUpdate($status);
 	}
 
 	/*
@@ -92,7 +85,7 @@ class helper
 	public function update_picture($pic)
 	{
 		$this->_connect();
-		$this->wa->set_picture($pic);
+		$this->wa->sendSetProfilePicture($pic);
 	}
 
 	/*
@@ -104,10 +97,9 @@ class helper
 		{
 			return;
 		}
-
-		$this->wa = new whatsapp($this->config['whatsapp_sender'], '');
+		$this->wa =new \WhatsProt($this->config['whatsapp_sender'], '', false);
 		$this->wa->connect();
-		$this->wa->login($this->config['whatsapp_password']);
+		$this->wa->loginWithPassword($this->config['whatsapp_password']);
 	}
 
 	/*
