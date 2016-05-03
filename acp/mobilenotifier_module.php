@@ -11,7 +11,7 @@ namespace tas2580\mobilenotifier\acp;
 
 class mobilenotifier_module
 {
-	var $u_action;
+	private $u_action;
 
 	public function main($id, $mode)
 	{
