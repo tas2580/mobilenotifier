@@ -11,7 +11,7 @@ namespace tas2580\mobilenotifier\acp;
 
 class mobilenotifier_info
 {
-	function module()
+	public function module()
 	{
 		return array(
 			'filename'		=> '\tas2580\mobilenotifier\mobilenotifier_module',

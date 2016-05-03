@@ -59,7 +59,7 @@ class listener implements EventSubscriberInterface
 	* @static
 	* @access public
 	*/
-	static public function getSubscribedEvents()
+	public static function getSubscribedEvents()
 	{
 		return array(
 			'core.ucp_profile_modify_profile_info'					=> 'ucp_profile_modify_profile_info',
