@@ -19,7 +19,12 @@ class mobilenotifier_info
 			'version'		=> '0.2.1',
 			'modes'		=> array(
 				'settings'		=> array(
-					'title'		=> 'ACP_MOBILENOTIFIER_TITLE',
+					'title'		=> 'ACP_MOBILENOTIFIER_SETTINGS',
+					'auth'	=> 'ext_tas2580/mobilenotifier && acl_a_board',
+					'cat'		=> array('ACP_MOBILENOTIFIER_TITLE')
+				),
+				'debug'		=> array(
+					'title'		=> 'ACP_MOBILENOTIFIER_DEBUG',
 					'auth'	=> 'ext_tas2580/mobilenotifier && acl_a_board',
 					'cat'		=> array('ACP_MOBILENOTIFIER_TITLE')
 				),

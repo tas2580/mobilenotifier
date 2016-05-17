@@ -42,13 +42,14 @@ class helper
 	*/
 	public function __construct(\phpbb\config\config $config, \phpbb\user $user, \phpbb\request\request $request, $phpbb_root_path, $php_ext)
 	{
-
+		$this->debug = false;
 		$this->config = $config;
 		$this->user = $user;
 		$this->request = $request;
 		$this->phpbb_root_path = $phpbb_root_path;
 		$this->php_ext = $php_ext;
 		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/vendor/Chat-API/whatsprot.class.' . $this->php_ext);
+
 	}
 
 	/*
@@ -63,7 +64,14 @@ class helper
 		$cc_array = $this->_country_code();
 		$cc = substr($dst, 0, 2);
 		$whatsapp = substr($dst, 2);
-		$this->wa->sendMessage($cc_array[$cc][1] . $whatsapp, $msg);
+
+		try {
+			$this->wa->sendMessage($cc_array[$cc][1] . $whatsapp, $msg);
+		}
+		catch (\Exception $e)
+		{
+			trigger_error($e->getMessage(), E_USER_WARNING);
+		}
 	}
 
 	/*
@@ -74,7 +82,13 @@ class helper
 	public function update_status($status)
 	{
 		$this->_connect();
-		$this->wa->sendStatusUpdate($status);
+		try {
+			$this->wa->sendStatusUpdate($status);
+		}
+		catch (\Exception $e)
+		{
+			trigger_error($e->getMessage(), E_USER_WARNING);
+		}
 	}
 
 	/*
@@ -85,8 +99,58 @@ class helper
 	public function update_picture($pic)
 	{
 		$this->_connect();
-		$this->wa->sendSetProfilePicture($pic);
+		try {
+			$this->wa->sendSetProfilePicture($pic);
+		}
+		catch (\Exception $e)
+		{
+			trigger_error($e->getMessage(), E_USER_WARNING);
+		}
 	}
+
+
+	public function register($code = '', $method = 'sms')
+	{
+		require_once($this->phpbb_root_path . 'ext/tas2580/mobilenotifier/vendor/Chat-API/Registration.' . $this->php_ext);
+		$r = new \Registration($this->config['whatsapp_sender'], $this->debug);
+
+		if (empty($code))
+		{
+			try {
+				$response = $r->codeRequest($method);
+			}
+			catch (\Exception $e)
+			{
+				trigger_error($e->getMessage(), E_USER_WARNING);
+			}
+		}
+		else
+		{
+			try {
+				$response = $r->codeRegister($code);
+			}
+			catch (\Exception $e)
+			{
+				trigger_error($e->getMessage(), E_USER_WARNING);
+			}
+			$response = (array) $response;
+
+			return isset($response['pw']) ? $response['pw'] : '';
+		}
+	}
+
+	public function send_test($dst, $msg)
+	{
+		$this->_connect();
+		try {
+			$this->wa->sendMessage($dst, $msg);
+		}
+		catch (\Exception $e)
+		{
+			trigger_error($e->getMessage(), E_USER_WARNING);
+		}
+	}
+
 
 	/*
 	 * Connect to Whatsapp
@@ -97,9 +161,22 @@ class helper
 		{
 			return;
 		}
-		$this->wa =new \WhatsProt($this->config['whatsapp_sender'], '', false);
-		$this->wa->connect();
-		$this->wa->loginWithPassword($this->config['whatsapp_password']);
+		$this->wa =new \WhatsProt($this->config['whatsapp_sender'], $this->config['sitename'], $this->debug);
+		try {
+			$this->wa->connect();
+		}
+		catch (\LoginFailureException $e)
+		{
+			trigger_error('FAILD_CONNECT_WHATSAPP', E_USER_WARNING);
+		}
+
+		try {
+			$this->wa->loginWithPassword($this->config['whatsapp_password']);
+		}
+		catch (\LoginFailureException $e)
+		{
+			trigger_error('FAILD_LOGIN_WHATSAPP', E_USER_WARNING);
+		}
 	}
 
 	/*
@@ -138,16 +215,16 @@ class helper
 		{
 			// Get the CC from hostname and translate some providers with international domains
 			$hosts = array(
-				'.arcor-ip.net'	=> '.de',
-				'.t-dialin.net'	=> '.de',
+				'.arcor-ip.net'		=> '.de',
+				'.t-dialin.net'		=> '.de',
 				'.sui-inter.net'	=> '.ch',
-				'.drei.com'		=> '.at',
-				'.proxad.net'	=> '.fr',
-				'.gaoland.net'	=> '.fr',
-				'.mchsi.com'	=> '.us',
-				'.comcast.net'	=> '.us',
-				'.as13285.net'	=> '.uk',
-				'.as29017.net'	=> '.uk',
+				'.drei.com'			=> '.at',
+				'.proxad.net'		=> '.fr',
+				'.gaoland.net'		=> '.fr',
+				'.mchsi.com'		=> '.us',
+				'.comcast.net'		=> '.us',
+				'.as13285.net'		=> '.uk',
+				'.as29017.net'		=> '.uk',
 			);
 			$cc = substr(strrchr(strtr($host, $hosts), '.'), 1);
 		}

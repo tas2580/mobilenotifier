@@ -33,5 +33,7 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 //
 $lang = array_merge($lang, array(
-	'ACP_MOBILENOTIFIER_TITLE'	=> 'Mobile Notifier',
+	'ACP_MOBILENOTIFIER_TITLE'		=> 'Mobile Notifier',
+	'ACP_MOBILENOTIFIER_SETTINGS'	=> 'Einstellungen',
+	'ACP_MOBILENOTIFIER_DEBUG'		=> 'Debug',
 ));
