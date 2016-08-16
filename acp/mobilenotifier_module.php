@@ -44,11 +44,8 @@ class mobilenotifier_module
 					$password = $request->variable('password', '');
 					$status = $request->variable('status', '');
 
-
-
 					if (!empty($sender) && !empty($password))
 					{
-
 						if ($status <> $config['whatsapp_status'])
 						{
 							$wa->update_status($status);
@@ -118,7 +115,5 @@ class mobilenotifier_module
 
 				break;
 		}
-
-
 	}
 }
