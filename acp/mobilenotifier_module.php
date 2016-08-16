@@ -12,6 +12,8 @@ namespace tas2580\mobilenotifier\acp;
 class mobilenotifier_module
 {
 	public $u_action;
+	public $tpl_name;
+	public $page_title;
 
 	public function main($id, $mode)
 	{
@@ -106,7 +108,7 @@ class mobilenotifier_module
 				if ($request->is_set_post('test'))
 				{
 					$nr = $request->variable('nr', '');
-					$response = $wa->send_test($nr, $user->lang('TEST_MESSAGE'));
+					$response = $wa->send_test($nr, $user->lang('TEST_MESSAGE', generate_board_url()));
 					trigger_error($user->lang('TEST_MESSAGE_SEND', $nr) . adm_back_link($this->u_action));
 				}
 				$template->assign_vars(array(
