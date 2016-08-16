@@ -52,7 +52,7 @@ class mobilenotifier extends \phpbb\notification\method\messenger_base
 
 		if (empty($this->queue))
 		{
-			 return;
+			return;
 		}
 
 		// Load all users we want to notify (we need their email address)
@@ -92,8 +92,8 @@ class mobilenotifier extends \phpbb\notification\method\messenger_base
 
 			$this->template($template_dir_prefix . $notification->get_email_template(), $user['user_lang']);
 			$this->assign_vars(array_merge(array(
-				'USERNAME'				=> $user['username'],
-				'SITENAME'				=> htmlspecialchars_decode($config['sitename']),
+				'USERNAME'					=> $user['username'],
+				'SITENAME'					=> htmlspecialchars_decode($config['sitename']),
 				'U_NOTIFICATION_SETTINGS'	=> generate_board_url() . '/ucp.' . $this->php_ext . '?i=ucp_notifications',
 			), $notification->get_email_template_variables()));
 

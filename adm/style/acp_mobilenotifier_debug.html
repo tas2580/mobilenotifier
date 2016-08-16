@@ -1,0 +1,60 @@
+<!-- INCLUDE overall_header.html -->
+<h1>{L_ACP_MOBILENOTIFIER_TITLE}</h1>
+
+<!-- IF S_EMPTY_SENDER -->
+<div class="errorbox">
+	{L_NO_SENDER_NUMBER_SET}
+</div>
+<!-- ELSE -->
+
+<form method="post" action="{U_ACTION}">
+<fieldset>
+	<legend>{L_ACP_REQUEST_CODE}</legend>
+	<p>{REQUEST_CODE_FOR}</p>
+	<dl>
+		<dt><label for="sender">{L_ACP_METHOD}{L_COLON}</label><br /><span>{L_ACP_METHOD_EXPLAIN}</span></dt>
+		<dd>
+			<select name="method">
+				<option value="sms">{L_SMS}</option>
+				<option value="voice">{L_VOICE}</option>
+			</select>
+		</dd>
+	</dl>
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="get_code" name="get_code" value="{L_ACP_REQUEST_CODE}">
+	</p>
+	{S_FORM_TOKEN}
+</fieldset>
+</form>
+
+
+<form method="post" action="{U_ACTION}">
+<fieldset>
+	<legend>{L_ACP_REQUEST_PW}</legend>
+	<dl>
+		<dt><label for="code">{L_ACP_CODE}{L_COLON}</label><br /><span>{L_ACP_CODE_EXPLAIN}</span></dt>
+		<dd><input type="text" id="code" name="code" size="7" maxlength="7"></dd>
+	</dl>
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="get_pw" name="get_pw" value="{L_ACP_REQUEST_PW}">
+	</p>
+	{S_FORM_TOKEN}
+</fieldset>
+</form>
+
+<form method="post" action="{U_ACTION}">
+<fieldset>
+	<legend>{L_ACP_SEND_TEST_MSG}</legend>
+	<dl>
+		<dt><label for="sender">{L_ACP_NUMBER}{L_COLON}</label><br /><span>{L_ACP_NUMBER_EXPLAIN}</span></dt>
+		<dd><input type="text" id="nr" name="nr" size="100" maxlength="100"></dd>
+	</dl>
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="test" name="test" value="{L_ACP_SEND_TEST_MSG}">
+	</p>
+	{S_FORM_TOKEN}
+</fieldset>
+</form>
+<!-- ENDIF -->
+
+<!-- INCLUDE overall_footer.html -->
