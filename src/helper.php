@@ -66,7 +66,9 @@ class helper
 		$whatsapp = substr($dst, 2);
 
 		try {
-			$this->wa->sendMessage($cc_array[$cc][1] . $whatsapp, $msg);
+			$id = $this->wa->sendMessage($cc_array[$cc][1] . $whatsapp, $msg);
+			$this->wa->waitForServer($id);
+			$this->wa->disconnect();
 		}
 		catch (\Exception $e)
 		{
@@ -83,7 +85,9 @@ class helper
 	{
 		$this->_connect();
 		try {
-			$this->wa->sendStatusUpdate($status);
+			$id = $this->wa->sendStatusUpdate($status);
+			$this->wa->waitForServer($id);
+			$this->wa->disconnect();
 		}
 		catch (\Exception $e)
 		{
@@ -100,7 +104,9 @@ class helper
 	{
 		$this->_connect();
 		try {
-			$this->wa->sendSetProfilePicture($pic);
+			$id = $this->wa->sendSetProfilePicture($pic);
+			$this->wa->waitForServer($id);
+			$this->wa->disconnect();
 		}
 		catch (\Exception $e)
 		{
@@ -143,7 +149,9 @@ class helper
 	{
 		$this->_connect();
 		try {
-			$this->wa->sendMessage($dst, $msg);
+			$id = $this->wa->sendMessage($dst, $msg);
+			$this->wa->waitForServer($id);
+			$this->wa->disconnect();
 		}
 		catch (\Exception $e)
 		{

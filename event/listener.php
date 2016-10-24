@@ -17,16 +17,19 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 */
 class listener implements EventSubscriberInterface
 {
-	/* @var \phpbb\request\request */
+	/** @var \phpbb\request\request */
 	protected $request;
 
-	/* @var \phpbb\user */
+	/** @var \phpbb\controller\helper */
+	protected $helper;
+
+	/** @var \phpbb\user */
 	protected $user;
 
 	/** @var \phpbb\template\template */
 	protected $template;
 
-	/* @var Container */
+	/** @var Container */
 	protected $phpbb_container;
 
 	/** @var string phpbb_root_path */
@@ -42,10 +45,11 @@ class listener implements EventSubscriberInterface
 	* @param string						$phpbb_root_path	phpbb_root_path
 	* @access public
 	*/
-	public function __construct(\phpbb\request\request $request, \phpbb\user $user, \phpbb\template\template $template, Container $phpbb_container, $phpbb_root_path)
+	public function __construct(\phpbb\request\request $request, \phpbb\controller\helper $helper, \phpbb\user $user, \phpbb\template\template $template, Container $phpbb_container, $phpbb_root_path)
 	{
 		$user->add_lang_ext('tas2580/mobilenotifier', 'common');
 		$this->request = $request;
+		$this->helper = $helper;
 		$this->user = $user;
 		$this->template = $template;
 		$this->phpbb_root_path = $phpbb_root_path;
@@ -62,12 +66,94 @@ class listener implements EventSubscriberInterface
 	public static function getSubscribedEvents()
 	{
 		return array(
-			'core.ucp_profile_modify_profile_info'					=> 'ucp_profile_modify_profile_info',
+			'core.ucp_profile_modify_profile_info'				=> 'ucp_profile_modify_profile_info',
 			'core.ucp_profile_info_modify_sql_ary'				=> 'ucp_profile_info_modify_sql_ary',
+			'core.ucp_prefs_personal_data'						=> 'ucp_prefs_personal_data',
+			'core.ucp_prefs_personal_update_data'				=> 'ucp_prefs_personal_update_data',
 			'core.acp_users_modify_profile'						=> 'acp_profile_modify_profile_info',
 			'core.acp_users_profile_modify_sql_ary'				=> 'acp_profile_info_modify_sql_ary',
+			'core.viewtopic_modify_post_row'					=> 'viewtopic_modify_post_row',
+			'core.viewtopic_post_rowset_data'					=> 'viewtopic_post_rowset_data',
 		);
 	}
+
+	/**
+	* Add Whatsapp to UCP template
+	*
+	* @param object $event The event object
+	* @return null
+	* @access public
+	*/
+	public function ucp_prefs_personal_data($event)
+	{
+		$data = $event['data'];
+		$data['user_allow_whatsapp'] = $this->request->variable('allow_whatsapp', (bool) $this->user->data['user_allow_whatsapp']);
+		$event['data'] = $data;
+
+		$this->template->assign_vars(array(
+			'S_USER_WHATSAPP'		=> empty($this->user->data['user_whatsapp']) ? false : true,
+			'S_ALLOW_WHATSAPP'		=> $this->user->data['user_allow_whatsapp'],
+		));
+	}
+
+	/**
+	* Update SQL array for UCP settings
+	*
+	* @param object $event The event object
+	* @return null
+	* @access public
+	*/
+	public function ucp_prefs_personal_update_data($event)
+	{
+		$sql_ary = $event['sql_ary'];
+		$sql_ary['user_allow_whatsapp'] = $event['data']['user_allow_whatsapp'];
+		$event['sql_ary'] = $sql_ary;
+	}
+
+	/**
+	* Add Whatsapp data to post data
+	*
+	* @param object $event The event object
+	* @return null
+	* @access public
+	*/
+	public function viewtopic_post_rowset_data($event)
+	{
+		$rowset_data = $event['rowset_data'];
+		$rowset_data['user_allow_whatsapp'] = $event['row']['user_allow_whatsapp'];
+		$rowset_data['user_whatsapp'] = $event['row']['user_whatsapp'];
+
+		$event['rowset_data'] = $rowset_data;
+
+	}
+
+	/**
+	* Add Whatsapp to contact data
+	*
+	* @param object $event The event object
+	* @return null
+	* @access public
+	*/
+	public function viewtopic_modify_post_row($event)
+	{
+		if (($event['row']['user_allow_whatsapp'] <> 1) || empty($event['row']['user_whatsapp']))
+		{
+			return;
+		}
+
+		$this->template->assign_var('S_INCLUDE_MOBILENOTIFIER_CSS', true);
+
+		$cp_row = $event['cp_row'];
+		$cp_row['blockrow'][] = array(
+			'PROFILE_FIELD_IDENT'		=> 'tas2580_whatsap',
+			'PROFILE_FIELD_NAME'		=> $this->user->lang('WHATSAPP'),
+			'PROFILE_FIELD_CONTACT'		=> $this->helper->route('tas2580_mobilenotifier_send', array('user_id' => $event['row']['user_id'])),
+			'S_PROFILE_CONTACT'			=> 1,
+		);
+
+		$event['cp_row'] = $cp_row;
+	}
+
 	/**
 	* Add a new data field to the ACP
 	*

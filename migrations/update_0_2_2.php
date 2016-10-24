@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* @package phpBB Extension - tas2580 Usermap
+* @package phpBB Extension - tas2580 Mobile Notifier
 * @copyright (c) 2016 tas2580 (https://tas2580.net)
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *

@@ -1,0 +1,3 @@
+tas2580_mobilenotifier_send:
+    pattern: /mobilenotifier/{user_id}
+    defaults: { _controller: tas2580.mobilenotifier.send:wa, user_id: "" }
