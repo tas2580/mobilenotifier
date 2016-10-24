@@ -3,12 +3,22 @@ services:
         class: tas2580\mobilenotifier\event\listener
         arguments:
             - @request
+            - @controller.helper
             - @user
             - @template
             - @service_container
             - %core.root_path%
         tags:
             - { name: event.listener }
+    tas2580.mobilenotifier.send:
+        class: tas2580\mobilenotifier\controller\send
+        arguments:
+            - @service_container
+            - @dbal.conn
+            - @controller.helper
+            - @request
+            - @template
+            - @user
     tas2580.mobilenotifier.src.helper:
         class: tas2580\mobilenotifier\src\helper
         arguments:
