@@ -90,14 +90,12 @@ class send
 	{
 		$this->user->add_lang_ext('tas2580/mobilenotifier', 'common');
 
-
 		$sql = 'SELECT username, user_allow_whatsapp, user_whatsapp
 			FROM ' . USERS_TABLE . '
 				WHERE user_id = ' . (int) $user_id;
 		$result = $this->db->sql_query($sql);
 		$row = $this->db->sql_fetchrow($result);
 		$this->db->sql_freeresult($result);
-
 
 		$submit = $this->request->is_set_post('submit');
 		if ($submit)
